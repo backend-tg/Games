@@ -435,7 +435,7 @@ def gameplay():
                         last_end_obs.add(birds(gp, 46, 40))
 
             if len(skyClouds) < 5 and random.randrange(0,300) == 10:
-                Cloud(width_screen, random.randrange(height_screen / 5, height_screen / 2))
+                Cloud(width_screen, random.randrange(int(height_screen / 5), int(height_screen / 2)))
 
             gamer_Dino.update()
             cactusan.update()
