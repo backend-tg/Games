@@ -4,26 +4,33 @@ import pygame
 import random
 from pygame import *
 
+# Инициализация Pygame
 pygame.init()
 
+# Настройка окна и базовых параметров игры
 screen_size_display = (width_screen, height_screen) = (600, 150)
 FPS = 60
 gravity = 0.6
 
+# Цветовые коды
 black_color = (0,0,0)
 white_color = (255,255,255)
 bg_color = (235, 235, 235)
 
+# Переменная для хранения рекорда
 highest_scores = 0
 
+# Настройка экрана
 screen_layout_display = pygame.display.set_mode(screen_size_display)
 time_clock = pygame.time.Clock()
 pygame.display.set_caption("Dino Run ")
 
+# Загрузка звуков
 jump_sound = pygame.mixer.Sound('resources/jump.wav')
 die_sound = pygame.mixer.Sound('resources/die.wav')
 checkPoint_sound = pygame.mixer.Sound('resources/checkPoint.wav')
 
+# Загрузка изображения с возможностью изменения размера
 def load_image(
     name,
     sx=-1,
@@ -44,6 +51,7 @@ def load_image(
 
     return (img, img.get_rect())
 
+# Загрузка спрайтов из спрайт-листа
 def load_sprite_sheet(
         s_name,
         namex,
@@ -84,6 +92,7 @@ def load_sprite_sheet(
 
     return sprites,sprite_rect
 
+# Отображение сообщения "Game Over" и кнопки перезапуска
 def gameover_display_message(rbtn_image, gmo_image):
     rbtn_rect = rbtn_image.get_rect()
     rbtn_rect.centerx = width_screen / 2
@@ -96,6 +105,7 @@ def gameover_display_message(rbtn_image, gmo_image):
     screen_layout_display.blit(rbtn_image, rbtn_rect)
     screen_layout_display.blit(gmo_image, gmo_rect)
 
+# Разбивка числа на отдельные цифры для отображения очков
 def extractDigits(num):
     if num > -1:
         d = []
@@ -494,6 +504,7 @@ def gameplay():
     pygame.quit()
     quit()
 
+# Точка входа в игру
 def main():
     isGameQuit = introduction_screen()
     if not isGameQuit:
